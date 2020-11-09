@@ -1,10 +1,17 @@
 <template>
-  <a-layout id="components-layout-demo-top-side-2">
-    <a-layout-header class="header">
-      <div class="logo">
+  <a-layout id="components-layout-demo-top-side-2" v-if="$route.meta.name != 'data-map'">
+    <a-layout-header class="header" style="background:#1da57a">
+      <div class="logo" style="height:50px;margin:6px 0">
             <img  src="../assets/logo.png" alt="">
       </div>
-      <a-menu
+
+        <menu-unfold-outlined
+          v-if="state.collapsed"
+          class="trigger"
+          @click="() => (state.collapsed = !state.collapsed)"
+        />
+        <menu-fold-outlined v-else class="trigger" @click="() => (state.collapsed = !state.collapsed)" />
+      <!-- <a-menu
         theme="dark"
         mode="horizontal"
         v-model:selectedKeys="state.selectedKeys1"
@@ -19,7 +26,7 @@
         <a-menu-item key="3">
           nav 3
         </a-menu-item>
-      </a-menu>
+      </a-menu> -->
     </a-layout-header>
     <a-layout>
       <a-layout-sider width="200" style="background: #fff">
@@ -29,42 +36,12 @@
           v-model:openKeys="state.openKeys"
           :style="{ height: '100%', borderRight: 0 }"
         >
-          <a-sub-menu key="sub1">
+          <a-sub-menu :key="index+1" v-for="(item,index) in router" >
             <template v-slot:title>
-              <span><user-outlined />Composition API</span>
+              <span><user-outlined />{{item.title1}}</span>
             </template>
-            <a-menu-item key="1"><router-link to="/composition_API">API</router-link>
+            <a-menu-item :key="index+1"><router-link :to="item.path" :target="item.path == '/data-map' ? '_blank' :''">{{item.title2}}</router-link>
             </a-menu-item>
-          </a-sub-menu>
-          <a-sub-menu key="sub2">
-            <template v-slot:title>
-              <span><deployment-unit-outlined />Reactive类工具API</span>
-            </template>
-            <a-menu-item key="2" ><router-link to="/reactive">react-api</router-link></a-menu-item>
-          </a-sub-menu>
-          <a-sub-menu key="sub3">
-            <template v-slot:title>
-              <span><deployment-unit-outlined />ref类工具API</span>
-            </template>
-            <a-menu-item key="3" ><router-link to="/ref">ref-api</router-link></a-menu-item>
-          </a-sub-menu>
-          <a-sub-menu key="sub4">
-            <template v-slot:title>
-              <span><deployment-unit-outlined />computed AND watch</span>
-            </template>
-            <a-menu-item key="4" ><router-link to="/com&watch">com&watch</router-link></a-menu-item>
-          </a-sub-menu>
-          <a-sub-menu key="sub6">
-            <template v-slot:title>
-              <span><deployment-unit-outlined />HOOK</span>
-            </template>
-            <a-menu-item key="6" ><router-link to="/hook">hook-function</router-link></a-menu-item>
-          </a-sub-menu>
-          <a-sub-menu key="sub7">
-            <template v-slot:title>
-              <span><close-outlined />VUEX</span>
-            </template>
-            <a-menu-item key="7" ><router-link to="/vuex">vuex_exercise</router-link></a-menu-item>
           </a-sub-menu>
         </a-menu>
       </a-layout-sider>
@@ -75,9 +52,10 @@
           <a-breadcrumb-item>App</a-breadcrumb-item>
         </a-breadcrumb>
         <a-layout-content
-          :style="{ background: '#fff', padding: '24px', margin: 0, minHeight: '600px' }"
+          :style="{ background: '#fff', padding: '24px',minHeight: '1000px' }"
+          class="aaa"
         >
-        <router-view></router-view>
+        <router-view ></router-view>
         </a-layout-content>
       </a-layout>
     </a-layout>
@@ -86,6 +64,7 @@
 <script lang="js">
 import { UserOutlined,AliwangwangOutlined,DeploymentUnitOutlined ,CloseOutlined } from '@ant-design/icons-vue';
 import {reactive} from 'vue'
+import {useRouter} from 'vue-router'
 export default {
 components: {
     UserOutlined,
@@ -94,14 +73,17 @@ components: {
     CloseOutlined
   },
   setup(){
-      const state = reactive({
+       const router = useRouter().options.routes
+       router.shift()
+       const state = reactive({
             selectedKeys1: ['2'],
             selectedKeys2: ['1'],
             collapsed: false,
-            openKeys: ['sub1'],
-      })
+            openKeys: ['1'],
+        })
       return {
-          state
+          state,
+          router
       }
   }
 };
@@ -121,10 +103,16 @@ components: {
 <style lang="scss" scoped>
 .logo{
     display: flex;
-    background: none!important;
+    // background: none!important;
+    border-radius: 40px 15px;
    img{
         width: 100%;
         height: 100%;
    }
+}
+
+.aaa{
+  position: relative;
+  
 }
 </style>

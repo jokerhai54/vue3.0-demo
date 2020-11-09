@@ -8,6 +8,8 @@ const routes = [
     redirect: '/composition_API'
   },
   {
+    title1:"Composition API",
+    title2:"API",
     path: '/composition_API',
     component: () => import('@/views/father/index.vue'),
     meta: {
@@ -15,6 +17,8 @@ const routes = [
     }
   },
   {
+    title1:"Reactive类工具API",
+    title2:"react-api",
     path: '/reactive',
     component: () => import('@/views/reactive/index.vue'),
     meta: {
@@ -22,6 +26,8 @@ const routes = [
     }
   },
   {
+    title1:"ref类工具API",
+    title2:"ref-api",
     path: '/ref',
     component: () => import('@/views/ref/index.vue'),
     meta: {
@@ -29,6 +35,8 @@ const routes = [
     }
   },
   {
+    title1:"computed AND watch",
+    title2:"com&watch",
     path: '/com&watch',
     component: () => import('@/views/computedORwatch/index.vue'),
     meta: {
@@ -36,6 +44,8 @@ const routes = [
     }
   },
   {
+    title1:"HOOK",
+    title2:"hook-function",
     path: '/hook',
     component: () => import('@/views/hook/index.vue'),
     meta: {
@@ -43,10 +53,30 @@ const routes = [
     }
   },
   {
+    title1:"VUEX_exercise",
+    title2:"VUEX",
     path: '/vuex',
     component: () => import('@/views/vuex/index.vue'),
     meta: {
       name: "vuex"
+    }
+  },
+  {
+    title1:"DATA_map",
+    title2:"MAP",
+    path: '/data-map',
+    component: () => import('@/views/data_map/index.vue'),
+    meta: {
+      name: "data-map"
+    }
+  },
+  {
+    title1:"entertainment",
+    title2:"her",
+    path: '/entertainment',
+    component: () => import('@/views/entertainment/index.vue'),
+    meta: {
+      name: "entertainment"
     }
   },
 ]

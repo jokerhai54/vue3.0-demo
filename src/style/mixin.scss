@@ -1,0 +1,10 @@
+@mixin bgImgCover($img,$leftRight:center,$upDown:center){
+    background: url(../../assets/img/#{$img}) no-repeat $leftRight $upDown / cover;
+}
+
+@mixin horizontal-vertical-center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+}

@@ -10,6 +10,11 @@
     <div>
         <p>{{num1}}</p>
         <p>{{num2}}</p>
+        <ul>
+          <li>{{name}}</li>
+          <li>{{age}}</li>
+          <li>{{like}}</li>
+        </ul>
     </div>
     
     <hr>
@@ -24,6 +29,13 @@
 
     <hr>
     <p>6--shallowRef, triggerRef(shallowRef数据是没有响应式的，但是可以使用triggerRef来手动触发)</p>
+
+    <hr>
+    <p>7--双向绑定</p>
+    <div>
+      <a-input type="text" v-model:value="mode" />
+      {{mode}}
+    </div>
 
 
   </div>
@@ -56,7 +68,8 @@ function customRefState(val,delay = 100){
         }
     })
 }
-import { isRef,toRef,toRefs,customRef, reactive, ref ,shallowRef,triggerRef} from "vue";
+
+import { isRef,toRef,toRefs,customRef, reactive, ref ,shallowRef,triggerRef, watch} from "vue";
 
 export default {
   name: "App",
@@ -77,6 +90,11 @@ export default {
 
     //3--toRefs(解构)
     const {num1 , num2} = stateAll()
+    const stateAll2 = reactive({
+      name:"joker",
+      age:"21",
+      like:"breaking"
+    })
 
     //4--unref
     const unState = ref(33)
@@ -89,10 +107,19 @@ export default {
     triggerRef(shallow)
     console.log(shallow.value.green)
 
+    //7--双向绑定
+    const mode = ref('')
+    watch(()=>mode.value,(newVal,oldVal)=>{
+      console.log(oldVal)
+      console.log(newVal,2222)
+    })
+
     return {
         num1,
         num2,
-        text: customRefState('hello')
+        ...toRefs(stateAll2),
+        text:customRefState(""),
+        mode
     };
   },
 };

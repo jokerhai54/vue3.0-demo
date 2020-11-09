@@ -1,0 +1,198 @@
+/**
+ * flex布局公共样式
+ * scss预处理，通过类名使用。
+ */
+
+ .flexbox {
+	display: flex;
+}
+
+/* 水平基准线 */
+
+/* 垂直居中 如文字局中*/
+.fx-align-center {
+	@extend .flexbox;
+	align-items: center;
+}
+
+/* 水平居左 */
+.fx-justify-start {
+	@extend .flexbox;
+	justify-content: flex-start;
+}
+
+/* 水平居中 */
+.fx-justify-center {
+	@extend .flexbox;
+	justify-content: center;
+}
+
+/* 水平居右 */
+.fx-justify-end {
+	@extend .flexbox;
+	justify-content: flex-end;
+}
+
+/* 水平两端对齐 */
+.fx-space-between {
+	@extend .flexbox;
+	justify-content: space-between;
+}
+
+/* 水平均匀分布 */
+.fx-space-around {
+	@extend .flexbox;
+	justify-content: space-around;
+}
+
+/* 水平 垂直居中 */
+.fx-center {
+	@extend .flexbox;
+	align-items: center;
+	justify-content: center;
+}
+
+/* 水平居左 垂直居中 */
+.fx-flex-start-center {
+	@extend .flexbox;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+/* 水平居右 垂直居中 */
+.fx-flex-end-center {
+	@extend .flexbox;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+/* 水平两端对齐垂直居上 */
+.fx-space-between-start {
+	@extend .flexbox;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+/* 水平两端对齐垂直居中 */
+.fx-space-between-center {
+	@extend .flexbox;
+	justify-content: space-between;
+	align-items: center;
+}
+
+/* 水平两端对齐垂直居下 */
+.fx-space-between-end {
+	@extend .flexbox;
+	justify-content: space-between;
+	align-items: flex-end;
+}
+
+
+/* 垂直基准线 justify-content为主轴 align-items为副轴 */
+/* column排列*/
+.fx-column {
+	@extend .flexbox;
+	flex-direction: column;
+}
+
+/* column排列 垂直居上 */
+.fx-column-justify-start {
+	@extend .fx-column;
+	justify-content: flex-start;
+}
+
+/* column排列 垂直居中 */
+.fx-column-justify-center {
+	@extend .fx-column;
+	justify-content: center;
+}
+
+/* column排列 垂直居下 */
+.fx-column-justify-end {
+	@extend .fx-column;
+	justify-content: flex-end;
+}
+
+/* column排列 水平居左 */
+.fx-column-align-start {
+	@extend .fx-column;
+	align-items: flex-start;
+}
+
+/* column排列 水平居中 */
+.fx-column-align-center {
+	@extend .fx-column;
+	align-items: center;
+}
+
+/* column排列 水平居右 */
+.fx-column-align-end {
+	@extend .fx-column;
+	align-items: flex-end;
+}
+
+/* column排列 水平垂直 居中 */
+.fx-column-center {
+	@extend .fx-column;
+	align-items: center;
+	justify-content: center;
+}
+
+/* column排列 垂直居上 水平居中 */
+.fx-column-start-align-center{
+	@extend .fx-column;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+/* column排列 垂直居下 水平居中 */
+.fx-column-end-align-center {
+	@extend .fx-column;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+/* column排列 两端对齐 */
+.fx-column-space-between {
+	@extend .fx-column;
+	justify-content: space-between;
+}
+
+/* column排列 均匀分布 */
+.fx-column-space-around {
+	@extend .fx-column;
+	justify-content: space-around;
+}
+
+
+.flex1 {
+	flex: 1;
+}
+
+.flex2 {
+	flex: 2;
+}
+
+.flex3 {
+	flex: 3;
+}
+
+.flex4 {
+	flex: 4;
+}
+
+.flex5 {
+	flex: 5;
+}
+
+.flex6 {
+	flex: 6;
+}
+
+.flex7 {
+	flex: 7;
+}
+
+.flex8 {
+	flex: 8;
+}
