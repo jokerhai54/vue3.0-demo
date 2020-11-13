@@ -71,6 +71,24 @@ const routes = [
     }
   },
   {
+    title1:"THREE",
+    title2:"three",
+    path: '/three',
+    component: () => import('@/views/three/index.vue'),
+    meta: {
+      name: "three"
+    }
+  },
+  {
+    title1:"Table_Echarts",
+    title2:"table_echarts",
+    path: '/table_echarts',
+    component: () => import('@/views/table_echarts/index.vue'),
+    meta: {
+      name: "table_echarts"
+    }
+  },
+  {
     title1:"entertainment",
     title2:"her",
     path: '/entertainment',
@@ -85,3 +103,4 @@ export default createRouter({
   history: createWebHistory(),
   routes
 })
+

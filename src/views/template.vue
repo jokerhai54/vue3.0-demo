@@ -5,6 +5,7 @@
             <img  src="../assets/logo.png" alt="">
       </div>
 
+
         <menu-unfold-outlined
           v-if="state.collapsed"
           class="trigger"
@@ -27,6 +28,8 @@
           nav 3
         </a-menu-item>
       </a-menu> -->
+      <SwitcherOutlined @click="screenfull" class="full_screen" v-if="state.isFullScreen"/>
+      <ExpandAltOutlined  @click="screenfull" class="full_screen" v-if="!state.isFullScreen"/>
     </a-layout-header>
     <a-layout>
       <a-layout-sider width="200" style="background: #fff">
@@ -38,7 +41,18 @@
         >
           <a-sub-menu :key="index+1" v-for="(item,index) in router" >
             <template v-slot:title>
-              <span><user-outlined />{{item.title1}}</span>
+              <span>
+                <UserOutlined v-if="index == 0"/>
+                <ToolOutlined v-if="index == 1"/>
+                <TrademarkOutlined v-if="index == 2"/>
+                <EyeOutlined v-if="index == 3"/>
+                <DeploymentUnitOutlined v-if="index == 4"/>
+                <CloseOutlined v-if="index == 5"/>
+                <DribbbleOutlined v-if="index == 6"/>
+                <DingtalkOutlined v-if="index == 7"/>
+                <TableOutlined  v-if="index == 8"/>
+                <HeartOutlined v-if="index == 9"/>
+                {{item.title1}}</span>
             </template>
             <a-menu-item :key="index+1"><router-link :to="item.path" :target="item.path == '/data-map' ? '_blank' :''">{{item.title2}}</router-link>
             </a-menu-item>
@@ -55,22 +69,47 @@
           :style="{ background: '#fff', padding: '24px',minHeight: '1000px' }"
           class="aaa"
         >
-        <router-view ></router-view>
+         <transition  enter-active-class="animated bounce" leave-active-class="animated hinge">
+             <router-view ></router-view>
+         </transition>
         </a-layout-content>
       </a-layout>
     </a-layout>
   </a-layout>
 </template>
 <script lang="js">
-import { UserOutlined,AliwangwangOutlined,DeploymentUnitOutlined ,CloseOutlined } from '@ant-design/icons-vue';
-import {reactive} from 'vue'
+import {UserOutlined,ToolOutlined,TableOutlined,TrademarkOutlined,EyeOutlined,SwitcherOutlined,ExpandAltOutlined  ,DeploymentUnitOutlined,CloseOutlined,DribbbleOutlined,DingtalkOutlined,HeartOutlined} from '@ant-design/icons-vue';
+import {reactive,onMounted} from 'vue'
 import {useRouter} from 'vue-router'
+import screenfulls from "screenfull";
+
+// 是否全屏并按键ESC键的方法
+function checkFull() {
+    var isFull =
+      document.fullscreenEnabled ||
+      window.fullScreen ||
+      document.webkitIsFullScreen ||
+      document.msFullscreenEnabled;
+    // to fix : false || undefined == undefined
+    if (isFull === undefined) {
+      isFull = false;
+    }
+    return isFull;
+}
 export default {
 components: {
     UserOutlined,
-    AliwangwangOutlined,
+    TrademarkOutlined,
+    EyeOutlined,
     DeploymentUnitOutlined,
-    CloseOutlined
+    CloseOutlined,
+    DribbbleOutlined,
+    DingtalkOutlined,
+    HeartOutlined,
+    ToolOutlined,
+    TableOutlined,
+    SwitcherOutlined,
+    ExpandAltOutlined 
   },
   setup(){
        const router = useRouter().options.routes
@@ -80,10 +119,26 @@ components: {
             selectedKeys2: ['1'],
             collapsed: false,
             openKeys: ['1'],
+            isFullScreen: false
+        })
+        //  全屏事件
+       const screenfull = () => {
+          screenfulls.toggle();
+          state.isFullscreen = true;
+        }
+        onMounted(()=>{
+          window.onresize = () => {
+            // 全屏下监控是否按键了ESC
+            if (!checkFull()) {
+              // 全屏下按键esc后要执行的动作
+              state.isFullscreen = false;
+            }
+          };
         })
       return {
           state,
-          router
+          router,
+          screenfull,
       }
   }
 };
@@ -110,9 +165,13 @@ components: {
         height: 100%;
    }
 }
-
-.aaa{
-  position: relative;
-  
+.full_screen{
+  position: absolute;
+  right: 20px;
+  top: 5px;
+  font-size: 18px;
+  color: white;
 }
+
+
 </style>

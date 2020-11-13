@@ -7481,6 +7481,11 @@ schema-utils@^3.0.0:
     ajv "^6.12.5"
     ajv-keywords "^3.5.2"
 
+screenfull@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.npm.taobao.org/screenfull/download/screenfull-5.0.2.tgz#b9acdcf1ec676a948674df5cd0ff66b902b0bed7"
+  integrity sha1-uazc8exnapSGdN9c0P9muQKwvtc=
+
 scroll-into-view-if-needed@^2.2.25:
   version "2.2.26"
   resolved "https://registry.npm.taobao.org/scroll-into-view-if-needed/download/scroll-into-view-if-needed-2.2.26.tgz?cache=0&sync_timestamp=1599055279395&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fscroll-into-view-if-needed%2Fdownload%2Fscroll-into-view-if-needed-2.2.26.tgz#e4917da0c820135ff65ad6f7e4b7d7af568c4f13"
@@ -8189,6 +8194,26 @@ thread-loader@^2.1.3:
     loader-runner "^2.3.1"
     loader-utils "^1.1.0"
     neo-async "^2.6.0"
+
+three-css2drender@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npm.taobao.org/three-css2drender/download/three-css2drender-1.0.0.tgz#2065e64c9d117033c08bfdc957a78edfe4b6ed1b"
+  integrity sha1-IGXmTJ0RcDPAi/3JV6eO3+S27Rs=
+
+three-obj-mtl-loader@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npm.taobao.org/three-obj-mtl-loader/download/three-obj-mtl-loader-1.0.3.tgz#2901efd5b77cce29b61733c63f196432ee653667"
+  integrity sha1-KQHv1bd8zim2FzPGPxlkMu5lNmc=
+
+three-orbit-controls@^82.1.0:
+  version "82.1.0"
+  resolved "https://registry.npm.taobao.org/three-orbit-controls/download/three-orbit-controls-82.1.0.tgz#11a7f33d0a20ecec98f098b37780f6537374fab4"
+  integrity sha1-EafzPQog7OyY8Jizd4D2U3N0+rQ=
+
+three@^0.122.0:
+  version "0.122.0"
+  resolved "https://registry.npm.taobao.org/three/download/three-0.122.0.tgz#bd9ed8a8820074856e8ba7b63fe0a65176e01aeb"
+  integrity sha1-vZ7YqIIAdIVui6e2P+CmUXbgGus=
 
 through2@^2.0.0:
   version "2.0.5"

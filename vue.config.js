@@ -1,5 +1,10 @@
 const webpack = require('webpack')
+const ThreeExamples = require('three')
 module.exports = {
+    pluginOptions: {
+        // ...
+        ...ThreeExamples
+    },
     lintOnSave: false,
     configureWebpack: {
         plugins: [
